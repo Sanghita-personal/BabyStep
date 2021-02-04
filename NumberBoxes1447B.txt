@@ -1,0 +1,52 @@
+Number Box
+
+Question link:-https://codeforces.com/contest/1447/problem/B
+
+
+code:
+
+#include <bits/stdc++.h>
+using namespace std;
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define ll long long
+#define pb push_back
+#define ppb pop_back
+#define cib cin.ignore(numeric_limits<streamsize>::max(), '\n')
+
+bool isPrime(ll n) 
+{ 
+    // Corner case 
+    if (n <= 1) 
+        return false; 
+  
+    // Check from 2 to n-1 
+    for (ll i = 2; i < n; i++) 
+        if (n % i == 0) 
+            return false; 
+  
+    return true; 
+} 
+
+
+int main(){
+ int t; cin>>t;
+ while(t--){
+     int n,m; cin>>n>>m;
+     int a[n][m];
+     bool p=true,z=false;int cn=0,min=500,ans=0;
+     for(int i=0;i<n;i++){
+         for(int j=0;j<m;j++){
+             cin>>a[i][j];
+             if(a[i][j]==0)z=true;
+             if(a[i][j]<0){p=false;cn++;}
+             if(abs(a[i][j])<min)min=abs(a[i][j]);
+             ans+=abs(a[i][j]);
+         }
+     }
+     if(p==true || z==true)cout<<ans<<endl;
+     else if(cn%2==0) cout<<ans<<endl;
+     else cout<<ans-min-min<<endl;
+   
+   
+ }
+}
